@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fin-auto-rubric"
+version = "0.1.0"
+description = "Criterion-level grading for the FinAutoRubric financial research benchmark"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+dataset = ["huggingface_hub>=1.0,<2"]
+
+[project.urls]
+Repository = "https://github.com/linq-lab/fin-auto-rubric"
+Dataset = "https://huggingface.co/datasets/Linq-AI-Research/FinAutoRubric"
+
+[project.scripts]
+fin-auto-rubric = "finautorubric.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["finautorubric*"]
+
+[tool.setuptools.package-data]
+"finautorubric.evaluation.prompts" = ["*.md"]
+"finautorubric.evaluation" = ["judges.toml"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
