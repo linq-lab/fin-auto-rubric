@@ -1,0 +1,10 @@
+# Optional single-judge run. Replace this model to choose a different judge.
+name = "or_muse_spark_medium"
+model = "meta/muse-spark-1.3-contributor"
+reasoning_effort = "medium"
+max_tokens = 32768
+max_retries = 4
+request_timeout_seconds = 300
+
+[provider]
+require_parameters = true
